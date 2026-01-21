@@ -6,7 +6,7 @@ public:
             mp.insert(nums[i]);
         }
         int i = 1;
-        while(i <= 101){
+        while(true){
             if(mp.find(k * i) == mp.end()) return k * i;
             i++;
         }
