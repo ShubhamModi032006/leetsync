@@ -10,8 +10,10 @@ public:
         for(auto& [key,val] : mp){
             if(val > 1){
                 ans.push_back(key);
+                mp[key]=0;
             }
         }
         return ans;
+        
     }
 };
