@@ -1,33 +1,19 @@
 class Solution {
 public:
     vector<int> twoOutOfThree(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3) {
-        vector<int> res;
-        for(int i=0;i<nums1.size();i++){
-            if(count(nums2.begin(), nums2.end() ,nums1[i])){
-                if(!count(res.begin(), res.end(),nums1[i])){
-                    res.push_back(nums1[i]);
-                }
-            }
-            if(count(nums3.begin(), nums3.end() ,nums1[i])){
-                if(!count(res.begin(), res.end(),nums1[i])){
-                    res.push_back(nums1[i]);
-                }
-            }
-        }
+        vector<int> c1(101,0);
+        vector<int> c2(101,0);
+        vector<int> c3(101,0);
 
-        for(int i=0;i<nums2.size();i++){
-            if(count(nums1.begin(), nums1.end() ,nums2[i])){
-                if(!count(res.begin(), res.end(),nums2[i])){
-                    res.push_back(nums2[i]);
-                }
-            }
-            if(count(nums3.begin(), nums3.end() ,nums2[i])){
-                if(!count(res.begin(), res.end(),nums2[i])){
-                    res.push_back(nums2[i]);
-                }
-            }
+        for(int x : nums1) c1[x] = 1;
+        for(int x : nums2) c2[x] = 1;
+        for(int x : nums3) c3[x] = 1;
+
+        vector<int> ans;
+        for(int i=0;i<101;i++){
+            int sum = c1[i] + c2[i] + c3[i];
+            if(sum >= 2) ans.push_back(i); 
         }
-        
-        return res;
+        return ans;
     }
 };
